@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Actions\UpsertQrGenerateAction;
 use App\DataTransferObjects\QrGenerateData;
 use App\Http\Requests\UpsertQrGenerateRequest;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class QrGenerateController extends Controller
@@ -13,11 +16,10 @@ class QrGenerateController extends Controller
     {
     }
 
-    public function create()
-    {
-        return view('qr.generate');
-    }
-
+    /**
+     * @param UpsertQrGenerateRequest $request
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
     public function generate(UpsertQrGenerateRequest $request)
     {
         $response = $this->upsert($request);
@@ -26,6 +28,10 @@ class QrGenerateController extends Controller
         return view('qr.qr-image', compact('response', 'name'));
     }
 
+    /**
+     * @param UpsertQrGenerateRequest $request
+     * @return string|null
+     */
     public function upsert(UpsertQrGenerateRequest $request)
     {
         $qrData = QrGenerateData::fromRequest($request);
