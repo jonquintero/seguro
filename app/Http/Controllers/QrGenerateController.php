@@ -16,10 +16,7 @@ class QrGenerateController extends Controller
     {
     }
 
-    /**
-     * @param UpsertQrGenerateRequest $request
-     * @return Application|Factory|View|\Illuminate\Foundation\Application
-     */
+
     public function generate(UpsertQrGenerateRequest $request)
     {
         $response = $this->upsert($request);
