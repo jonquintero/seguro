@@ -2,7 +2,7 @@
 
 namespace App\DataTransferObjects;
 
-use App\Http\Requests\UpserQrGenerateRequest;
+use App\Http\Requests\UpsertQrGenerateRequest;
 
 class QrGenerateData
 {
@@ -14,7 +14,7 @@ class QrGenerateData
     ) {
     }
 
-    public static function fromRequest(UpserQrGenerateRequest $request): self
+    public static function fromRequest(UpsertQrGenerateRequest $request): self
     {
         return new static(
             $request->name,
